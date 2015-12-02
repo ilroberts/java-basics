@@ -4,13 +4,13 @@ public class UniqueChars {
 
     public static boolean hasUniqueChars(String str) {
    
-        int checker=0;
+        boolean[] checker = new boolean[26];    
         for(int i=0;i<str.length();i++) {
             int val = str.charAt(i) - 'a';
-            if((checker & (1 << val)) > 0) {
+            if(checker[val]) {
                 return false;
-            }
-            checker |= (1 << val);
+            }    
+            checker[val] = true;
         }
         return true;
     }
